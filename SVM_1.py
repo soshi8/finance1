@@ -1,6 +1,8 @@
 # coding: utf-8
 from sklearn import svm
+from sklearn.metrics import accuracy_score
 import pandas as pd
+
 stock_data = pd.read_csv('stockchart_yyyymmdd.csv')
 count_s =  len(stock_data)
 owarine = stock_data['終値'].values.tolist()
@@ -21,3 +23,5 @@ m = len(answers)
 
 clf.fit(successive_data, answers)
 predicted = clf.predict(successive_data)
+
+accuracy_score(answers, predicted)
